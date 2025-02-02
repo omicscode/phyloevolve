@@ -1,4 +1,4 @@
-use astruct::Alignment;
+crate::astruct::Alignment;
 use std::error::Error;
 use std::fs::File;
 use std::io::{BufRead, BufReader};

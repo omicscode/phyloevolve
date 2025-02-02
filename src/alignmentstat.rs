@@ -1,6 +1,5 @@
-mod astruct;
-use astruct::Alignment;
-use astruct::AlignmentStat;
+crate:: astruct::Alignment;
+crate::astruct::AlignmentStat;
 use std::error::Error;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
@@ -17,11 +16,11 @@ pub fn alignmentstats(path: &str) -> Result<String, Box<dyn Error>> {
         if line.starts_with(">") {
             header.push(line);
         } else if !line.starts_with(">") {
-            seq.push(line);
+            sequence.push(line);
         }
     }
     for i in 0..header.len() {
-        mergeseq.push(ALignment {
+        mergeseq.push(Alignment {
             head: header[i],
             seq: sequence[i],
         })
