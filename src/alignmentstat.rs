@@ -1,8 +1,21 @@
-crate:: astruct::Alignment;
-crate::astruct::AlignmentStat;
+use crate::astruct::Alignment;
+use crate::astruct::AlignmentStat;
 use std::error::Error;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
+
+/*
+
+Author Gaurav Sablok
+SLB Potsdam
+Date: 2025-2-3
+
+making the stats of the alignment and estimating all the site
+frquencies and the base frequencing and the number of the sites
+with N and the mismatches.
+
+
+*/
 
 pub fn alignmentstats(path: &str) -> Result<String, Box<dyn Error>> {
     let alignmentopen = File::open(path).expect("file not found");
@@ -21,39 +34,41 @@ pub fn alignmentstats(path: &str) -> Result<String, Box<dyn Error>> {
     }
     for i in 0..header.len() {
         mergeseq.push(Alignment {
-            head: header[i],
-            seq: sequence[i],
+            head: header[i].clone(),
+            seq: sequence[i].clone(),
+            length: sequence[i].len(),
         })
     }
     let mut newheader: Vec<AlignmentStat> = Vec::new();
     for i in mergeseq.iter() {
-        let headpush: String = i.head;
-        let seqpush: String = i.seq;
+        let headpush: String = i.head.clone();
+        let seqpush: String = i.seq.clone();
         let seqchara: Vec<_> = seqpush
             .chars()
-            .filter(|x| x == "A" || !x == "T" && !x == "G" && !x == "C" && !x == "N" && !x == "-")
+            .filter(|x| *x == 'A' || *x != 'T' && *x != 'G' && *x != 'C' && *x != 'N' && *x != '-')
             .collect::<Vec<_>>();
         let seqchart: Vec<_> = seqpush
             .chars()
-            .filter(|x| x == "T" && !x == "A" && !x == "G" && !x == "C" && !x == "N" && !x == "-")
+            .filter(|x| *x == 'T' && *x != 'A' && *x != 'G' && *x != 'C' && *x != 'N' && *x != '-')
             .collect::<Vec<_>>();
         let seqcharg: Vec<_> = seqpush
             .chars()
-            .filter(|x| x == "G" && x != "A" && x != "T" && x != "C" && x != "N" && !x == "-");
+            .filter(|x| *x == 'G' && *x != 'A' && *x != 'T' && *x != 'C' && *x != 'N' && *x != '-')
+            .collect::<Vec<_>>();
         let seqcharc: Vec<_> = seqpush
             .chars()
-            .filter(|x| x == "C" && !x = "T" && !x == "A" && !x == "G" && !x == "N" && !x == "-")
+            .filter(|x| *x == 'C' && *x != 'T' && *x != 'A' && *x != 'G' && *x != 'N' && *x != '-')
             .collect::<Vec<_>>();
         let seqcharn: Vec<_> = seqpush
             .chars()
-            .filter(|x| x == "N" && !x == "A" && !x == "T" && !x == "G" && !x == "C" && !x == "-")
+            .filter(|x| *x == 'N' && *x != 'A' && *x != 'T' && *x == 'G' && *x != 'C' && *x != '-')
             .collect::<Vec<_>>();
         let seqcharalt: Vec<_> = seqpush
             .chars()
-            .filter(|x| x == "-" && !x == "A" && !x == "T" && !x == "G" && !x == "C" && !x == "N")
+            .filter(|x| *x == '-' && *x != 'A' && *x != 'T' && *x != 'G' && *x != 'C' && *x != 'N')
             .collect::<Vec<_>>();
         newheader.push(AlignmentStat {
-            name: i.head,
+            name: headpush,
             length: i.seq.len(),
             basea: seqchara.len(),
             baset: seqchart.len(),
@@ -61,8 +76,8 @@ pub fn alignmentstats(path: &str) -> Result<String, Box<dyn Error>> {
             basec: seqcharc.len(),
             basen: seqcharn.len(),
             baseabsent: seqcharalt.len(),
-            gcontent: (seqchars.len() + seqcharsg.len())
-                / (seqcharsa.len() + seqcharst.len() + seqcharsg.len() + seqcharsc.len()),
+            gccontent: (seqcharg.len() + seqcharc.len())
+                / (seqchara.len() + seqchart.len() + seqcharg.len() + seqcharc.len()),
         });
     }
 

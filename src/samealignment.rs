@@ -1,9 +1,9 @@
 use std::collections::HashSet;
 use std::error::Error;
 use std::fs::File;
-use std::io::{BufRead, BufReader};
+use std::io::{BufRead, BufReader, Write};
 
-pub fn samealignment(path: &str) -> Result<String, Box<dyn Error>> {
+pub fn dealignment(path: &str) -> Result<String, Box<dyn Error>> {
     let alignmentopen = File::open(path).expect("file not found");
     let alignmentread = BufReader::new(alignmentopen);
 
@@ -20,13 +20,13 @@ pub fn samealignment(path: &str) -> Result<String, Box<dyn Error>> {
         }
     }
 
+    let writehead: Vec<_> = alignmenthash_header.iter().collect::<Vec<_>>();
+    let writeseq: Vec<_> = alignmenthash_seq.iter().collect::<Vec<_>>();
+
     let mut uniquealignment = File::create("filtered-alignment.fasta").expect("file not found");
-    for i in 0..alignmenthash_header.len() {
-        writeln!(
-            uniquealignment,
-            ">{:?}\n{:?}",
-            alignmenthash_header[i], alignmenthash_seq[i]
-        );
+    for i in 0..writehead.len() {
+        writeln!(uniquealignment, ">{:?}\n{:?}", writehead[i], writeseq[i])
+            .expect("line not found");
     }
 
     Ok(

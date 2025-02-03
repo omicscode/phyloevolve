@@ -25,9 +25,9 @@ pub enum Commands {
         /// provide the path to the alignment file
         alignment: String,
         /// provide the start range
-        start: usize,
+        start: String,
         /// provide the end range
-        end: usize,
+        end: String,
         /// provide the header for the merge alignment
         header: String,
     },
@@ -40,5 +40,24 @@ pub enum Commands {
     Alignmentstats {
         /// path  to the alignment file
         alignment: String,
+    },
+    /// filter the sites with the given base
+    FilterSite {
+        /// provide the path the alignment file
+        alignment: String,
+        /// provide the base that needs to be removed from the alignment
+        base: String,
+    },
+    /// removes same bases across all the alignment
+    FilterAll {
+        /// provide the path to the alignment file
+        alignment: String,
+    },
+    /// collineratiy block based alignment filtering
+    FilterBlock {
+        /// path to the alignment file
+        alignment: String,
+        /// provide the block size
+        block: String,
     },
 }

@@ -3,14 +3,20 @@ mod alignmentstat;
 mod alignmerge;
 mod args;
 mod astruct;
-mod samealingment;
+mod filterblock;
+mod filtersame;
+mod filtersite;
+mod samealignment;
+use crate::align::alignmerge;
+use crate::alignmentstat::alignmentstats;
+use crate::alignmerge::alignmergeall;
 use crate::args::CommandParse;
 use crate::args::Commands;
-use aligmentstat::alignmentstats;
-use align::alignment;
-use alignmerge::alignmerge;
+use crate::filterblock::filterblockalignment;
+use crate::filtersame::filtersiteall;
+use crate::filtersite::filtersiteremoval;
+use crate::samealignment::dealignment;
 use clap::Parser;
-use samalignment::samealignments;
 
 /*
 * Author Gaurav Sablok
@@ -27,7 +33,7 @@ fn main() {
             alignment,
             mergeheader,
         } => {
-            let command = alignment(alignment, mergeheader.clone()).unwrap();
+            let command = alignmerge(alignment, mergeheader).unwrap();
             println!(
                 "The target from the corresponding hmm files have been filtered: {:?}",
                 command
@@ -39,19 +45,34 @@ fn main() {
             end,
             header,
         } => {
-            let command = alignmerge(alignment, start, end, header).unwrap();
+            let command = alignmergeall(alignment, start, end, header).unwrap();
             println!(
                 "The values after applying the score filter are:{:?}",
                 command
             );
         }
         Commands::SameAlignment { alignment } => {
-            let command = samealignment(alignment).unwrap();
+            let command = dealignment(alignment).unwrap();
             println!("The file has been written:{:?}", command);
         }
-        Commands::AlignmentStats { alignment } => {
+        Commands::Alignmentstats { alignment } => {
             let command = alignmentstats(alignment).unwrap();
             println!("The alignment stats for the given file is: {:?}", command);
+        }
+        Commands::FilterSite { alignment, base } => {
+            let command = filtersiteremoval(alignment, base).unwrap();
+            println!(
+                "The results after the filtering have been written:{:?}",
+                command
+            );
+        }
+        Commands::FilterAll { alignment } => {
+            let command = filtersiteall(alignment).unwrap();
+            println!("The filtered bases have been written");
+        }
+        Commands::FilterBlock { alignment, block } => {
+            let command = filterblockalignment(alignment, block).unwrap();
+            println!("The alignment block has been filtered")
         }
     }
 }
