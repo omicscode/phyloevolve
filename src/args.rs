@@ -60,4 +60,39 @@ pub enum Commands {
         /// provide the block size
         block: String,
     },
+    /// allows for the view of the alignment
+    AlignmentView {
+        /// path to the alignment file
+        alignment: String,
+    },
+    /// allows for the embedded view of the clipped Alignment
+    AlignmentClipview {
+        /// path to the alignment file
+        alignment: String,
+        /// start of the alignment
+        start: usize,
+        /// end of the alignment
+        end: usize,
+    },
+    /// replace the specific sites based on the site probability
+    Sitereplace {
+        /// path to the alignment file
+        alignment: String,
+        /// path to the letter that you want to replace
+        letter: String,
+        /// path ot the replacement
+        replacement: String,
+    },
+    /// estimate the protein stats
+    ProteinStat {
+        /// path to the protein file
+        alignment: String,
+    },
+    /// indel substituter
+    Indelreplace {
+        /// path to the alignment file
+        alignment: String,
+        /// base sustitute for the indel
+        indel: String,
+    },
 }

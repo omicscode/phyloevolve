@@ -6,7 +6,13 @@ mod astruct;
 mod filterblock;
 mod filtersame;
 mod filtersite;
+mod indelreplace;
+mod indelreplace;
+mod proteinstat;
 mod samealignment;
+mod sitereplace;
+mod view;
+mod viewspliced;
 use crate::align::alignmerge;
 use crate::alignmentstat::alignmentstats;
 use crate::alignmerge::alignmergeall;
@@ -15,7 +21,11 @@ use crate::args::Commands;
 use crate::filterblock::filterblockalignment;
 use crate::filtersame::filtersiteall;
 use crate::filtersite::filtersiteremoval;
+use crate::indelreplace::substitute;
 use crate::samealignment::dealignment;
+use crate::siterepalce::sitereplacenuc;
+use crate::view::alignment_embedded_common;
+use crate::viewspliced::spliced_alignment;
 use clap::Parser;
 
 /*
@@ -73,6 +83,37 @@ fn main() {
         Commands::FilterBlock { alignment, block } => {
             let command = filterblockalignment(alignment, block).unwrap();
             println!("The alignment block has been filtered")
+        }
+        Commands::AlignmentView { alignment } => {
+            let command = alignment_embedded_common(alignment);
+            println!("The printed alignment for the give alignment is as follows")
+        }
+        Commands::AlignmentClipview {
+            alignment,
+            start,
+            end,
+        } => {
+            let command = spliced_alignment(alignment, start, end);
+            println!("The printed alignment for the specific region are")
+        }
+        Commands::Sitereplace {
+            alignment,
+            letter,
+            replacement,
+        } => {
+            let command = sitereplacenuc(alignment, letter, replacement).unwrap();
+            println!("The site have been repalced:{:?}", command)
+        }
+        Commands::ProteinStat { alignment } => {
+            let command = proteomestats(alignment).unwrap();
+            println!("The stats have been written for the file: {:?}", command);
+        }
+        Commands::Indelreplace { alignment, indel } => {
+            let command = substitute(alignment, letter).unwrap();
+            println!(
+                "The substitution for the files have been made: {:?}",
+                command
+            );
         }
     }
 }
