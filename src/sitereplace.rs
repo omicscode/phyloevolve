@@ -30,7 +30,7 @@ pub fn sitereplacenuc(
         }
     }
     let mut replaceseq: Vec<String> = Vec::new();
-    for i in replaceseq.iter() {
+    for i in sequence.iter() {
         let replaceiter = i.to_string().replace(letter, replacement);
         replaceseq.push(replaceiter);
     }

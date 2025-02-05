@@ -1,4 +1,3 @@
-use std::collections::HashSet;
 use std::error::Error;
 use std::fs::File;
 use std::io::{BufRead, BufReader, Write};
@@ -17,11 +16,7 @@ pub fn proteomestats(path: &str) -> Result<String, Box<dyn Error>> {
     let fileread = BufReader::new(fileopen);
     let mut header: Vec<String> = Vec::new();
     let mut sequence: Vec<String> = Vec::new();
-    let proteinvector: Vec<chars> = vec![
-        'A', 'R', 'N', 'D', 'C', 'E', 'Q', 'G', 'H', 'I', 'L', 'K', 'M', 'F', 'P', 'S', 'T', 'W',
-        'Y', 'V',
-    ];
-    let proteinarr: Vec<String> = vec![
+    let _proteinarr: Vec<String> = vec![
         "ALA".to_string(),
         "ARG".to_string(),
         "ASN".to_string(),
@@ -43,7 +38,7 @@ pub fn proteomestats(path: &str) -> Result<String, Box<dyn Error>> {
         "TYR".to_string(),
         "VAL".to_string(),
     ];
-    for i in filread.lines() {
+    for i in fileread.lines() {
         let line = i.expect("line not found");
         if line.starts_with(">") {
             header.push(line.replace(">", ""));
@@ -75,7 +70,7 @@ pub fn proteomestats(path: &str) -> Result<String, Box<dyn Error>> {
         let mut yusize: usize = 0usize;
         let mut vusize: usize = 0usize;
         let ihold: Vec<String> = i.chars().map(String::from).collect::<Vec<_>>();
-        let iholdtuple: Vec<(String, usize)> = Vec::new();
+        let mut iholdtuple: Vec<(String, usize)> = Vec::new();
         for i in ihold.iter() {
             if i == "A" {
                 ausize += 1usize;
@@ -85,11 +80,11 @@ pub fn proteomestats(path: &str) -> Result<String, Box<dyn Error>> {
                 nusize += 1usize;
             } else if i == "D" {
                 dusize += 1usize;
-            } else if i = "C" {
+            } else if i == "C" {
                 cusize += 1usize;
-            } else if i = "E" {
+            } else if i == "E" {
                 eusize += 1usize;
-            } else if i = "Q" {
+            } else if i == "Q" {
                 qusize += 1usize;
             } else if i == "G" {
                 gusize += 1usize;
@@ -130,7 +125,7 @@ pub fn proteomestats(path: &str) -> Result<String, Box<dyn Error>> {
         iholdtuple.push(("E".to_string(), eusize));
         iholdtuple.push(("Q".to_string(), qusize));
         iholdtuple.push(("G".to_string(), gusize));
-        iholdtuple.push(("H".to_string(), gusize));
+        iholdtuple.push(("H".to_string(), husize));
         iholdtuple.push(("I".to_string(), iusize));
         iholdtuple.push(("L".to_string(), lusize));
         iholdtuple.push(("K".to_string(), kusize));
@@ -149,9 +144,9 @@ pub fn proteomestats(path: &str) -> Result<String, Box<dyn Error>> {
     for i in 0..finalcount.len() {
         writeln!(
             filewrite,
-            "{}\t{}\t{}",
+            "{:?}\t{:?}\t{:?}",
             header[i], sequence[i], finalcount[i]
-        );
+        ).expect("file not found");
     }
 
     Ok("proteome stats have been written".to_string())

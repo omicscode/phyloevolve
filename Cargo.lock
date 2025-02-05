@@ -3,6 +3,14 @@
 version = 4
 
 [[package]]
+name = "alignmenttools"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "colored",
+]
+
+[[package]]
 name = "anstream"
 version = "0.6.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -105,14 +113,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fde0e0ec90c9dfb3b4b1a0891a7dcd0e2bffde2f7efed5fe7c9bb00e5bfb915e"
 dependencies = [
  "windows-sys",
-]
-
-[[package]]
-name = "graphtools"
-version = "0.1.0"
-dependencies = [
- "clap",
- "colored",
 ]
 
 [[package]]

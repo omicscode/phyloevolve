@@ -1,5 +1,4 @@
-use color::Colorize;
-use std::error::Error;
+use colored::Colorize;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 /*
@@ -13,7 +12,7 @@ allows for the visualization of the spliced alignment
 
 */
 
-pub fn spliced_alignment(path: &str, start: usize, end: usize) {
+pub fn splicedalignment(path: &str, start: usize, end: usize) {
     #[derive(Debug, Clone, PartialEq, PartialOrd)]
     struct Embedded {
         header: String,
@@ -59,15 +58,13 @@ pub fn spliced_alignment(path: &str, start: usize, end: usize) {
     for i in 0..addclipped.len() {
         for j in 0..addclipped[0].len() {
             if addclipped[i][j].to_string() == "A" {
-                print!("{}", addclipped[i][j].to_string().yellow().bold())
+                print!("{}", addclipped[i][j].to_string().on_yellow().bold())
             } else if addclipped[i][j].to_string() == "T" {
-                print!("{}", addclipped[i][j].to_string().red().bold())
+                print!("{}", addclipped[i][j].to_string().on_red().bold())
             } else if addclipped[i][j].to_string() == "C" {
-                print!("{}", addclipped[i][j].to_string().blue().bold())
-            } else if addclipped[i][j].to_string() == "G" {
-                print!("{}", addclipped[i][j].to_string().green().bold())
+                print!("{}", addclipped[i][j].to_string().on_green().bold())
             } else if addclipped[i][j].to_string() == "-" {
-                print!("{}", addclipped[i][j].to_string().purple().bold())
+                print!("{}", addclipped[i][j].to_string().on_purple().bold())
             } else {
                 continue;
             }

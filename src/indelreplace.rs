@@ -1,6 +1,6 @@
 use std::error::Error;
 use std::fs::File;
-use std::io::{BufRead, BufReader};
+use std::io::{BufRead, BufReader, Write};
 
 /*
  Author Gaurav Sablok
@@ -29,13 +29,7 @@ pub fn substitute(path: &str, letter: &str) -> Result<String, Box<dyn Error>> {
 
     let mut seqreplace: Vec<String> = Vec::new();
     for i in seq.iter() {
-        let seqmut: String = i
-            .chars()
-            .map(String::from)
-            .replace("-", letter)
-            .collect::<Vec<_>>()
-            .join("")
-            .to_string();
+        let seqmut: String = i.replace("-", letter);
         seqreplace.push(seqmut);
     }
 

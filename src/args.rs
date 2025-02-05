@@ -95,4 +95,31 @@ pub enum Commands {
         /// base sustitute for the indel
         indel: String,
     },
+    /// search for the specific protein and the nucleotide motifs
+    MotifSearch {
+        /// path to the alignment file
+        alignment: String,
+        /// motif for the search
+        motif: String,
+    },
+    /// specific part of the alignment and the upstream and the downstream of alignment
+    UpDownStream {
+        /// path to the alignment
+        alignment: String,
+        /// focal site
+        focal: String,
+        /// upstream alignment
+        upstream: String,
+        /// downstream alignment
+        downstream: String,
+    },
+    /// extract the places of the specified base for LD analysis
+    SiteAlignment {
+        /// path to the alignment file
+        alignment: String,
+        /// path to the header
+        header: String,
+        /// specific base
+        base: String,
+    },
 }

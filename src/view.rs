@@ -1,5 +1,4 @@
-use color::Colorize;
-use std::error::Error;
+use colored::Colorize;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
