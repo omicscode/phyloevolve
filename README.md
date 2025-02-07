@@ -1,14 +1,12 @@
-# alignmenttools
- - rust based alignmenttools for genome, metagenome, pangenome.
- - separated the graph alignments including the graphview in a separate crate.  
- - coded all the parts of this and two block collinearity algorithms for block wise comparison. 
+# phylogenomicstools
+ - rust based alignmenttools for genome, metagenome, pangenome.   
  - please see the last commit message and if it says compiled binary then it is completed or else still in development version. 
 
  ```
  cargo build 
  ```
  ```
-➜  graphtools git:(main) ✗ ./target/debug/alignmenttools -h                                                                                                                                    
+➜  phylogenomicstools git:(main) ✗ ./target/debug/alignmenttools -h                                                                                                                                    
  all graph and alignments tools                                                                                                                                                                 
                                                                                                                                                                                                
  Usage: alignmenttools <COMMAND>                                                                                                                                                                
