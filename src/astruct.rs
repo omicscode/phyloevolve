@@ -17,3 +17,12 @@ pub struct AlignmentStat {
     pub baseabsent: usize,
     pub gccontent: usize,
 }
+
+#[derive(Debug, Clone, PartialEq, PartialOrd)]
+pub struct Plotter {
+    pub name: String,
+    pub count_a: usize,
+    pub count_t: usize,
+    pub count_g: usize,
+    pub count_c: usize,
+}

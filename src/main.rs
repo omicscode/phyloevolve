@@ -1,4 +1,5 @@
 mod align;
+mod alignmentplot;
 mod alignmentstat;
 mod alignmerge;
 mod args;
@@ -17,6 +18,7 @@ mod updownstream;
 mod view;
 mod viewspliced;
 use crate::align::alignmerge;
+use crate::alignmentplot::plotter;
 use crate::alignmentstat::alignmentstats;
 use crate::alignmerge::alignmergeall;
 use crate::args::CommandParse;
@@ -151,6 +153,10 @@ fn main() {
                 "The specific site information from all those alignments have been written:{:?}",
                 command
             );
+        }
+        Commands::Plotter { alignment } => {
+            let command = plotter(alignment).unwrap();
+            println!("The alignment plots have been written:{:?}", command);
         }
     }
 }

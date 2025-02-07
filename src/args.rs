@@ -1,9 +1,9 @@
 use clap::{Parser, Subcommand};
 #[derive(Debug, Parser)]
 #[command(
-    name = "alignmenttools",
+    name = "phylogenomicstools",
     version = "1.0",
-    about = "all graph and alignments tools"
+    about = "rust-phylogenomics tools"
 )]
 pub struct CommandParse {
     /// subcommands for the specific actions
@@ -121,5 +121,10 @@ pub enum Commands {
         header: String,
         /// specific base
         base: String,
+    },
+    /// frequency plot for the alignments
+    Plotter {
+        /// path to the alignment file
+        alignment: String,
     },
 }
