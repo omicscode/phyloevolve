@@ -4,12 +4,14 @@ mod alignmentstat;
 mod alignmerge;
 mod args;
 mod astruct;
+mod colorcoded;
 mod filesearch;
 mod filterblock;
 mod filtersame;
 mod filtersite;
 mod indelreplace;
 mod motifsearch;
+mod proteincolourcounter;
 mod proteinstat;
 mod samealignment;
 mod sitealignment;
@@ -23,11 +25,13 @@ use crate::alignmentstat::alignmentstats;
 use crate::alignmerge::alignmergeall;
 use crate::args::CommandParse;
 use crate::args::Commands;
+use crate::colorcoded::readcodecolor;
 use crate::filterblock::filterblockalignment;
 use crate::filtersame::filtersiteall;
 use crate::filtersite::filtersiteremoval;
 use crate::indelreplace::substitute;
 use crate::motifsearch::motifsearchall;
+use crate::proteincolourcounter::proteomecolor;
 use crate::proteinstat::proteomestats;
 use crate::samealignment::dealignment;
 use crate::sitealignment::sitespecific;
@@ -157,6 +161,17 @@ fn main() {
         Commands::Plotter { alignment } => {
             let command = plotter(alignment).unwrap();
             println!("The alignment plots have been written:{:?}", command);
+        }
+        Commands::Nucleotidecolour { alignment } => {
+            let command = readcodecolor(alignment).unwrap();
+            println!("The colour coded alignment are as follows:{:?}", command);
+        }
+        Commands::Proteomecolour { alignment } => {
+            let command = proteomecolor(alignment).unwrap();
+            println!(
+                "The color coded protein alignment protein table: {:?}",
+                command
+            );
         }
     }
 }

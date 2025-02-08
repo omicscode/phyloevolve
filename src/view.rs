@@ -54,27 +54,33 @@ pub fn alignment_embedded_common(path: &str) {
             if finalholdseq_multivector[i][j].to_string() == "A" {
                 print!(
                     "{}",
-                    finalholdseq_multivector[i][j].to_string().yellow().bold()
+                    finalholdseq_multivector[i][j]
+                        .to_string()
+                        .on_yellow()
+                        .bold()
                 )
             } else if finalholdseq_multivector[i][j].to_string() == "T" {
                 print!(
                     "{}",
-                    finalholdseq_multivector[i][j].to_string().red().bold()
+                    finalholdseq_multivector[i][j].to_string().on_red().bold()
                 )
             } else if finalholdseq_multivector[i][j].to_string() == "C" {
                 print!(
                     "{}",
-                    finalholdseq_multivector[i][j].to_string().blue().bold()
+                    finalholdseq_multivector[i][j].to_string().on_blue().bold()
                 )
             } else if finalholdseq_multivector[i][j].to_string() == "G" {
                 print!(
                     "{}",
-                    finalholdseq_multivector[i][j].to_string().green().bold()
+                    finalholdseq_multivector[i][j].to_string().on_green().bold()
                 )
             } else if finalholdseq_multivector[i][j].to_string() == "-" {
                 print!(
                     "{}",
-                    finalholdseq_multivector[i][j].to_string().purple().bold()
+                    finalholdseq_multivector[i][j]
+                        .to_string()
+                        .on_purple()
+                        .bold()
                 )
             } else {
                 continue;

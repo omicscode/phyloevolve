@@ -127,4 +127,14 @@ pub enum Commands {
         /// path to the alignment file
         alignment: String,
     },
+    /// color coded map
+    Nucleotidecolour {
+        /// path to the alignment file
+        alignment: String,
+    },
+    /// proteome heatmap
+    Proteomecolour {
+        /// path to the protein alignment
+        alignment: String,
+    },
 }
