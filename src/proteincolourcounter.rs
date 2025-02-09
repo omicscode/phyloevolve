@@ -1,13 +1,13 @@
+use colored::Colorize;
 use std::error::Error;
 use std::fs::File;
-use std::io::{BufRead, BufReader, Write};
+use std::io::{BufRead, BufReader};
 /*
   Author Gaurav Sablok
   SLB Potsdam
   Date: 2025-2-8
 
   protein colour coded heatmaps
-
 
 */
 
@@ -140,98 +140,53 @@ pub fn proteomecolor(path: &str) -> Result<String, Box<dyn Error>> {
         finalcount.push((sequence[i].clone(), iholdtuple));
     }
 
-    let mut med_a: Vec<usize> = Vec::new();
-    let mut med_r: Vec<usize> = Vec::new();
-    let mut med_n: Vec<usize> = Vec::new();
-    let mut med_d: Vec<usize> = Vec::new();
-    let mut med_c: Vec<usize> = Vec::new();
-    let mut med_e: Vec<usize> = Vec::new();
-    let mut med_q: Vec<usize> = Vec::new();
-    let mut med_g: Vec<usize> = Vec::new();
-    let mut med_h: Vec<usize> = Vec::new();
-    let mut med_i: Vec<usize> = Vec::new();
-    let mut med_l: Vec<usize> = Vec::new();
-    let mut med_k: Vec<usize> = Vec::new();
-    let mut med_m: Vec<usize> = Vec::new();
-    let mut med_f: Vec<usize> = Vec::new();
-    let mut med_p: Vec<usize> = Vec::new();
-    let mut med_s: Vec<usize> = Vec::new();
-    let mut med_t: Vec<usize> = Vec::new();
-    let mut med_w: Vec<usize> = Vec::new();
-    let mut med_y: Vec<usize> = Vec::new();
-    let mut med_v: Vec<usize> = Vec::new();
-
-    for i in finalcount.iter(){
-        for j in i.1.iter(){
+    for i in finalcount.iter() {
+        for j in i.1.iter() {
             if j.0 == "A" {
-                med_a.push(j.1)
+                print!("{}-{}", j.0.on_blue().bold(), j.1);
             } else if j.0 == "R" {
-                med_r.push(j.1);
+                print!("{}-{}", j.0.on_purple().bold(), j.1);
             } else if j.0 == "N" {
-                med_n.push(j.1);
+                print!("{}-{}", j.0.on_yellow().bold(), j.1);
             } else if j.0 == "D" {
-                med_d.push(j.1);
+                print!("{}-{}", j.0.on_magenta().bold(), j.1);
             } else if j.0 == "C" {
-                med_c.push(j.1);
+                print!("{}-{}", j.0.on_bright_yellow().bold(), j.1);
             } else if j.0 == "E" {
-                med_e.push(j.1);
+                print!("{}-{}", j.0.on_bright_red().bold(), j.1);
             } else if j.0 == "Q" {
-                med_q.push(j.1);
+                print!("{}-{}", j.0.on_bright_magenta().bold(), j.1);
             } else if j.0 == "G" {
-                med_g.push(j.1)
+                print!("{}-{}", j.0.on_red().bold(), j.1);
             } else if j.0 == "H" {
-                med_h.push(j.1);
+                print!("{}-{}", j.0.on_green().bold(), j.1);
             } else if j.0 == "I" {
-                med_i.push(j.1);
+                print!("{}-{}", j.0.on_bright_green().bold(), j.1);
             } else if j.0 == "L" {
-                med_l.push(j.1);
+                print!("{}-{}", j.0.on_cyan().bold(), j.1);
             } else if j.0 == "K" {
-                med_k.push(j.1);
+                print!("{}-{}", j.0.on_bright_cyan().bold(), j.1);
             } else if j.0 == "M" {
-                med_m.push(j.1);
+                print!("{}-{}", j.0.on_black().bold(), j.1);
             } else if j.0 == "F" {
-                med_f.push(j.1);
-            } else if j.0 == "E" {
-            med_e.push(j.1);
-        } else if j.0 == "Q" {
-            med_f.push(j.1);
-        } else if j.0 == "G" {
-            med_g.push(j.1);
-        } else if j.0 == "H" {
-            med_h.push(j.1);
-        } else if j.0 == "I" {
-            med_i.push(j.1);
-        } else if j.0 == "L" {
-            med_l.push(j.1);
-        } else if j.0 == "K" {
-            med_k.push(j.1);
-        } else if j.0 == "M" {
-            med_m.push(j.1);
-        } else if j.0 == "F" {
-            med_f.push(j.1);
-        } else if j.0 == "P" {
-            med_p.push(j.1);
-        } else if j.0 == "S"{
-            med_s.push(j.1);
-        } else if j.0 == "T"{
-            med_t.push(j.1);
-        } else if j.0 == "W"{
-            med_w.push(j.1);
-        } else if j.0 == "Y" {
-            med_y.push(j.1);
-        } else if j.0 == "V"{
-            med_v.push(j.1);
+                print!("{}-{}", j.0.on_bright_black().bold(), j.1);
+            } else if j.0 == "P" {
+                print!("{}-{}", j.0.on_white().bold(), j.1);
+            } else if j.0 == "S" {
+                print!("{}-{}", j.0.on_bright_white().bold(), j.1);
+            } else if j.0 == "T" {
+                print!("{}-{}", j.0.on_blue().underline(), j.1);
+            } else if j.0 == "W" {
+                print!("{}-{}", j.0.on_magenta().underline(), j.1);
+            } else if j.0 == "Y" {
+                print!("{}-{}", j.0.on_purple().underline(), j.1);
+            } else if j.0 == "V" {
+                print!("{}-{}", j.0.on_cyan().underline(), j.1);
+            } else {
+                continue;
+            }
         }
-     }
-        
-    for i in 0..finalcount.len() {
-        let istring: String = finalcount[i].0.clone();
-        let ivec: Vec<(String, usize)> = finalcount[i].1.clone();
-        for j in ivec.iter(){
-            print!("{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}", istring, "A".to_string(), "R".to_string(), "N".to_string(), "D".to_string(), "C".to_string(), "E".to_string(), "Q".to_string(), "G".to_string(), "H".to_string(), "I".to_string(), "L".to_string(), "K".to_string(), "M".to_string(), "F".to_string(), "P".to_string(), "S".to_string(), "T".to_string(), "W".to_string(), "Y".to_string())
-            if j.1 > 
-        }
+        println!();
     }
-
     Ok("proteome stats have been written".to_string())
 }
