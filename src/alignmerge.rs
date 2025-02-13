@@ -1,7 +1,7 @@
 use crate::astruct::Alignment;
 use std::error::Error;
 use std::fs::File;
-use std::io::{BufRead, BufReader};
+use std::io::{BufRead, BufReader, Write};
 
 /*
 
@@ -59,12 +59,15 @@ pub fn alignmergeall(
         spliced_header.push(i.head.clone());
         spliced_seq.push(i.seq.clone());
     }
-    let mergehead: String = mergestr.to_string();
-    let sequencemerge: String = spliced_seq.concat().to_string();
+    let mergehead = mergestr;
+    let sequencemerge: String = spliced_seq.concat();
     println!(
-        "The merged header and the merged sequence for the regions specific is >{:?}\n{:?}",
+        "The merged header and the merged sequence for the regions specific is \n>{}\n{}",
         mergehead, sequencemerge
     );
+
+    let mut filewrite = File::create("alignment-merged.fasta").expect("file not found");
+    writeln!(filewrite, ">{}\n{}", mergehead, sequencemerge).expect("file not found");
 
     Ok("The final merged sequence has been written".to_string())
 }

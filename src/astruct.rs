@@ -15,7 +15,7 @@ pub struct AlignmentStat {
     pub basec: usize,
     pub basen: usize,
     pub baseabsent: usize,
-    pub gccontent: usize,
+    pub gccontent: f32,
 }
 
 #[derive(Debug, Clone, PartialEq, PartialOrd)]

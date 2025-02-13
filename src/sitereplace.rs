@@ -1,6 +1,6 @@
 use std::error::Error;
 use std::fs::File;
-use std::io::{BufRead, BufReader};
+use std::io::{BufRead, BufReader, Write};
 
 /*
 
@@ -33,6 +33,11 @@ pub fn sitereplacenuc(
     for i in sequence.iter() {
         let replaceiter = i.to_string().replace(letter, replacement);
         replaceseq.push(replaceiter);
+    }
+
+    let mut filewrite = File::create("replaced-sites.fasta").expect("file not found");
+    for i in 0..replaceseq.len() {
+        writeln!(filewrite, ">{:?}\n{:?}", header[i], replaceseq[i]).expect("file not found");
     }
 
     Ok("The sites have been replaced".to_string())

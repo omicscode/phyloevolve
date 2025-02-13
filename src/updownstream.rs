@@ -13,7 +13,7 @@ pub fn upstreamdownstream(
 
     let focalcap: usize = focal.parse::<usize>().unwrap();
     let upstreamcap: usize = upstream.parse::<usize>().unwrap();
-    let downstreamcap: usize = downstream.parse::<usize>().unwrap();
+    let downstreamcap: usize = downstream.parse::<usize>().unwrap() + 1usize;
     let mut clipped_region: Vec<String> = Vec::new();
     for i in sequence.iter() {
         let clip = i[focalcap - upstreamcap..focalcap + downstreamcap].to_string();

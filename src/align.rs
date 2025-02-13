@@ -26,9 +26,9 @@ pub fn alignmerge(path: &str, mergeheader: &str) -> Result<String, Box<dyn Error
         assert_eq!(sequence[i].len(), sequence[i + 1].len())
     }
     let mergesequence: String = sequence.concat().to_string();
-    println!(">{:?}\n{:?}", mergehead, mergesequence);
+    println!(">{}\n{}", mergehead, mergesequence);
     let mut filewrite = File::create("alignment-stringwrite.fasta").expect("file not found");
-    writeln!(filewrite, ">{:?}\n{:?}", mergehead, mergesequence).expect("file not found");
+    writeln!(filewrite, ">{}\n{}", mergehead, mergesequence).expect("file not found");
 
     Ok::<String, Box<dyn Error>>(
         "The merged results for the final sequences along with the header are".to_string(),

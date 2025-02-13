@@ -2,7 +2,7 @@ use crate::astruct::Alignment;
 use crate::astruct::AlignmentStat;
 use std::error::Error;
 use std::fs::File;
-use std::io::{BufRead, BufReader};
+use std::io::{BufRead, BufReader, Write};
 
 /*
 
@@ -76,9 +76,30 @@ pub fn alignmentstats(path: &str) -> Result<String, Box<dyn Error>> {
             basec: seqcharc.len(),
             basen: seqcharn.len(),
             baseabsent: seqcharalt.len(),
-            gccontent: (seqcharg.len() + seqcharc.len())
-                / (seqchara.len() + seqchart.len() + seqcharg.len() + seqcharc.len()),
+            gccontent: (seqcharg.len() as f32 + seqcharc.len() as f32)
+                / (seqchara.len() as f32
+                    + seqchart.len() as f32
+                    + seqcharg.len() as f32
+                    + seqcharc.len() as f32),
         });
+    }
+
+    let mut filewrite = File::create("alignment-stats.txt").expect("file not found");
+    for i in newheader.iter() {
+        writeln!(
+            filewrite,
+            "{:?}\t{:?}\t{:?}\t{:?}\t{:?}\t{:?}\t{:?}\t{:?}\t{:?}",
+            i.name,
+            i.length,
+            i.basea,
+            i.baset,
+            i.baseg,
+            i.basec,
+            i.basen,
+            i.baseabsent,
+            i.gccontent
+        )
+        .expect("line not found");
     }
 
     Ok("the alignment stats for the given alignment are as follows".to_string())

@@ -1,9 +1,6 @@
-
-
-
 use std::error::Error;
 use std::fs::File;
-use std::io::{BufRead, BufReader};
+use std::io::{BufRead, BufReader, Write};
 
 /*
 
@@ -47,6 +44,11 @@ pub fn filtersiteall(path: &str) -> Result<String, Box<dyn Error>> {
                 }
             }
         }
+    }
+
+    let mut filewrite = File::create("siteremoval.fasta").expect("file not found");
+    for i in 0..filteredseq.len() {
+        writeln!(filewrite, ">{:?}\n{:?}", head[i], filteredseq[i]).expect("file not found");
     }
 
     Ok("The files for the neural network with all the similar sites across all the alignments have been written".to_string())

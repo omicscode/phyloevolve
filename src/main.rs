@@ -57,10 +57,7 @@ fn main() {
             mergeheader,
         } => {
             let command = alignmerge(alignment, mergeheader).unwrap();
-            println!(
-                "The target from the corresponding hmm files have been filtered: {:?}",
-                command
-            );
+            println!("The merged alignment have been written: {:?}", command);
         }
         Commands::Alignmergeinterval {
             alignment,
