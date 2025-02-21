@@ -1,4 +1,4 @@
-# phylogenomicstools
+# phyloevolve
  - rust based alignmenttools for genome, metagenome, pangenome.   
  - please see the last commit message and if it says compiled binary then it is completed or else still in development version. 
 
@@ -6,10 +6,10 @@
  cargo build 
  ```
  ```
- ➜  phylogenomicstools git:(main) ✗ ./target/debug/phylogenomicstools -h
+ ➜  phyloevolve git:(main) ✗ ./target/debug/phylogenomicstools -h
  rust-phylogenomics tools
 
- Usage: phylogenomicstools <COMMAND>
+ Usage: phyloevolve <COMMAND>
 
  Commands:
   alignmerge          merge all the alignment into a single string
