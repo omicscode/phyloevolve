@@ -4,7 +4,7 @@
 
 ![](https://github.com/IBCHgenomic/eVaiutilities/blob/main/logo.png)
 
- - rust based alignmenttools for genome, metagenome, pangenome.   
+ - rust based alignmenttools for genome, metagenome, pangenome. It gives you all the alignments tools and also gives you colour coded alignment for each alignment and sub-alignment region. check the alignment view and alignment-clipview. 
 
  ```
  cargo build 
