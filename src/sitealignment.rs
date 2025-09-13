@@ -5,12 +5,11 @@ use std::error::Error;
   Author Gaurav Sablok
   SLB Potsdam
   Date: 2025-2-5
-
  site specific alignment bases position.
-
 */
 
-pub fn sitespecific(path: &str, head: &str, base: &str) -> Result<String, Box<dyn Error>> {
+#[tokio::main]
+pub async fn sitespecific(path: &str, head: &str, base: &str) -> Result<String, Box<dyn Error>> {
     let (header, sequence) = read(path).unwrap();
     let mut information: Vec<Vec<usize>> = Vec::new();
     for i in 0..sequence.len() {

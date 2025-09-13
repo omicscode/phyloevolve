@@ -7,12 +7,11 @@ use std::io::{BufRead, BufReader, Write};
 Author Gaurav Sablok
 SLb Potsdam
 Date: 2025-2-3
-
 removal of all the sites that are same across the alignment and prepare the alignment for the feeds to the rnn netowrk
-
 */
 
-pub fn filtersiteall(path: &str) -> Result<String, Box<dyn Error>> {
+#[tokio::main]
+pub async fn filtersiteall(path: &str) -> Result<String, Box<dyn Error>> {
     let fileopen = File::open(path).expect("file not found");
     let fileread = BufReader::new(fileopen);
 

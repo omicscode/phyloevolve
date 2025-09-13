@@ -3,7 +3,15 @@ use std::error::Error;
 use std::fs::File;
 use std::io::{BufRead, BufReader, Write};
 
-pub fn dealignment(path: &str) -> Result<String, Box<dyn Error>> {
+/*
+* Author Gaurav Sablok
+* Date: 2025-2-2
+  SLB Potsdam.
+* a complete set of the alignment tools for the evolutionary scale and also for the graph alignments
+* */
+
+#[tokio::main]
+pub async fn dealignment(path: &str) -> Result<String, Box<dyn Error>> {
     let alignmentopen = File::open(path).expect("file not found");
     let alignmentread = BufReader::new(alignmentopen);
 

@@ -1,9 +1,9 @@
 use clap::{Parser, Subcommand};
 #[derive(Debug, Parser)]
 #[command(
-    name = "phylogenomicstools",
+    name = "phyloEVOLVE",
     version = "1.0",
-    about = "rust-phylogenomics tools"
+    about = "rust-phylogenomicstools"
 )]
 pub struct CommandParse {
     /// subcommands for the specific actions

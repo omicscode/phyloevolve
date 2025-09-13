@@ -6,12 +6,11 @@ use std::io::{BufRead, BufReader, Write};
  Author Gaurav Sablok
  SLB Potsdam
  Date: 2025-2-4
-
  protein and nucleotide subsitution for the indels
-
 */
 
-pub fn substitute(path: &str, letter: &str) -> Result<String, Box<dyn Error>> {
+#[tokio::main]
+pub async fn substitute(path: &str, letter: &str) -> Result<String, Box<dyn Error>> {
     let fileopen = File::open(path).expect("file not found");
     let fileread = BufReader::new(fileopen);
 

@@ -6,12 +6,11 @@ use std::io::{BufRead, BufReader};
  Auhor Gaurav Sablok
  SLB Potsdam
  Date: 2025-2-3
-
  implementing block linearity score for the filtering of the alignment and prepairing the alignment for the neural networks
-
 */
 
-pub fn filterblockalignment(path: &str, block: &str) -> Result<String, Box<dyn Error>> {
+#[tokio::main]
+pub async fn filterblockalignment(path: &str, block: &str) -> Result<String, Box<dyn Error>> {
     let fileopen = File::open(path).expect("file not found");
     let fileread = BufReader::new(fileopen);
     let mut header: Vec<String> = Vec::new();

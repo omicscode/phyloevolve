@@ -6,13 +6,11 @@ use std::error::Error;
   Author Gaurav Sablok
   SLB Potsdam
   Date: 2025-2-8
-
  colour coded heatmaps for the nucleotide alignment.
-
-
 */
 
-pub fn readcodecolor(path: &str) -> Result<String, Box<dyn Error>> {
+#[tokio::main]
+pub async fn readcodecolor(path: &str) -> Result<String, Box<dyn Error>> {
     let (header, sequence) = read(path).unwrap();
 
     let mut vecsize: Vec<(String, usize, usize, usize, usize)> = Vec::new();

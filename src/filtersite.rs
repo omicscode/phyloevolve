@@ -6,13 +6,11 @@ use std::io::{BufRead, BufReader, Write};
  Author Gaurav Sablok
 SLB Potsdam,
 Date: 2025-2-3
-
-filtering the specific sites from the alignment
-using the specific based
-
+filtering the specific sites from the alignment using the specific based
 */
 
-pub fn filtersiteremoval(path: &str, base: &str) -> Result<String, Box<dyn Error>> {
+#[tokio::main]
+pub async fn filtersiteremoval(path: &str, base: &str) -> Result<String, Box<dyn Error>> {
     let pathopen = File::open(path).expect("file not found");
     let pathread = BufReader::new(pathopen);
 

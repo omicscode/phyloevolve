@@ -40,16 +40,20 @@ use crate::updownstream::upstreamdownstream;
 use crate::view::alignment_embedded_common;
 use crate::viewspliced::splicedalignment;
 use clap::Parser;
+use figlet_rs::FIGfont;
 
 /*
 * Author Gaurav Sablok
 * Date: 2025-2-2
   SLB Potsdam.
-*
 * a complete set of the alignment tools for the evolutionary scale and also for the graph alignments
 * */
 
 fn main() {
+    let standard_font = FIGfont::standard().unwrap();
+    let figure = standard_font.convert("phyloEVOLVE");
+    assert!(figure.is_some());
+    println!("{}", figure.unwrap());
     let argsparse = CommandParse::parse();
     match &argsparse.command {
         Commands::Alignmerge {

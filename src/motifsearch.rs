@@ -3,16 +3,14 @@ use std::error::Error;
 use std::fs::File;
 use std::io::Write;
 /*
-
  Author Gaurav Sablok
  SLB Potsdam
  Date 2025-2-5
-
  Motif search and placeholder across the alignment.
-
 */
 
-pub fn motifsearchall(path: &str, motif: &str) -> Result<String, Box<dyn Error>> {
+#[tokio::main]
+pub async fn motifsearchall(path: &str, motif: &str) -> Result<String, Box<dyn Error>> {
     let (header, sequence) = read(path).unwrap();
     let mut returnvec: Vec<(String, usize, usize)> = Vec::new();
     for i in 0..sequence.len() {

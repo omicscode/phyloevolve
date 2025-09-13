@@ -6,12 +6,11 @@ use std::io::{BufRead, BufReader};
   Author Gaurav Sablok
   SLB Potsdam
   Date: 2025-2-8
-
   protein colour coded heatmaps
-
 */
 
-pub fn proteomecolor(path: &str) -> Result<String, Box<dyn Error>> {
+#[tokio::main]
+pub async fn proteomecolor(path: &str) -> Result<String, Box<dyn Error>> {
     let fileopen = File::open(path).expect("file not found");
     let fileread = BufReader::new(fileopen);
     let mut header: Vec<String> = Vec::new();

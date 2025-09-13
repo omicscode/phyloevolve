@@ -3,7 +3,15 @@ use std::error::Error;
 use std::fs::File;
 use std::io::Write;
 
-pub fn upstreamdownstream(
+/*
+* Author Gaurav Sablok
+* Date: 2025-2-2
+  SLB Potsdam.
+* a complete set of the alignment tools for the evolutionary scale and also for the graph alignments
+* */
+
+#[tokio::main]
+pub async fn upstreamdownstream(
     path: &str,
     focal: &str,
     upstream: &str,

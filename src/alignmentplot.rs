@@ -8,12 +8,11 @@ use std::io::Write;
   Author Gaurav Sablok
   SLB Potsdam
   Date: 2025-2-7
-
   frequency plotter for the genome alignment data.
-
 */
 
-pub fn plotter(path: &str) -> Result<String, Box<dyn Error>> {
+#[tokio::main]
+pub async fn plotter(path: &str) -> Result<String, Box<dyn Error>> {
     let (header, sequence) = read(path).unwrap();
     let mut plotread: Vec<Plotter> = Vec::new();
     for i in 0..sequence.len() {

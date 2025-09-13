@@ -1,17 +1,16 @@
 use std::error::Error;
 use std::fs::File;
 use std::io::{BufRead, BufReader, Write};
+
 /*
   Author Gaurav Sablok
   SLB Potsdam
   Date: 2025-2-4
-
   estimate the protein stats for the given proteome file
-
-
 */
 
-pub fn proteomestats(path: &str) -> Result<String, Box<dyn Error>> {
+#[tokio::main]
+pub async fn proteomestats(path: &str) -> Result<String, Box<dyn Error>> {
     let fileopen = File::open(path).expect("file not found");
     let fileread = BufReader::new(fileopen);
     let mut header: Vec<String> = Vec::new();
@@ -146,7 +145,8 @@ pub fn proteomestats(path: &str) -> Result<String, Box<dyn Error>> {
             filewrite,
             "{:?}\t{:?}\t{:?}",
             header[i], sequence[i], finalcount[i]
-        ).expect("file not found");
+        )
+        .expect("file not found");
     }
 
     Ok("proteome stats have been written".to_string())
