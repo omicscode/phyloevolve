@@ -1,7 +1,12 @@
 [package]
 name = "phyloEvolve"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
+license = "MIT"
+authors = ["Gaurav Sablok <gsablok@ibch.poznan.pl>"]
+description = "variant analyzer for human genomics"
+homepage = "https://github.com/genomicssport/phyloevolve"
+repository = "https://github.com/genomicssport/phyloevolve"
 
 [dependencies]
 charts = "0.3.0"
