@@ -3,10 +3,8 @@ use std::fs::File;
 use std::io::{BufRead, BufReader};
 
 /*
- Auhor Gaurav Sablok
- SLB Potsdam
- Date: 2025-2-3
- implementing block linearity score for the filtering of the alignment and prepairing the alignment for the neural networks
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
 */
 
 #[tokio::main]

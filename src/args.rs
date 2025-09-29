@@ -3,7 +3,11 @@ use clap::{Parser, Subcommand};
 #[command(
     name = "phyloEVOLVE",
     version = "1.0",
-    about = "rust-phylogenomicstools"
+    about = "rust-phylogenomicstools
+    ************************************************
+    Author Gaurav Sablok,
+    Email: codeprog@icloud.com
+    ************************************************"
 )]
 pub struct CommandParse {
     /// subcommands for the specific actions

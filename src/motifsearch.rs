@@ -2,11 +2,10 @@ use crate::filesearch::read;
 use std::error::Error;
 use std::fs::File;
 use std::io::Write;
+
 /*
- Author Gaurav Sablok
- SLB Potsdam
- Date 2025-2-5
- Motif search and placeholder across the alignment.
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
 */
 
 #[tokio::main]

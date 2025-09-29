@@ -3,10 +3,8 @@ use std::fs::File;
 use std::io::{BufRead, BufReader, Write};
 
 /*
-  Author Gaurav Sablok
-  SLB Potsdam
-  Date: 2025-2-4
-  estimate the protein stats for the given proteome file
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
 */
 
 #[tokio::main]

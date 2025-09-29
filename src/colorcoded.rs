@@ -3,10 +3,8 @@ use colored::Colorize;
 use std::error::Error;
 
 /*
-  Author Gaurav Sablok
-  SLB Potsdam
-  Date: 2025-2-8
- colour coded heatmaps for the nucleotide alignment.
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
 */
 
 #[tokio::main]

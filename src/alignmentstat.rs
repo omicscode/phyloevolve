@@ -5,12 +5,8 @@ use std::fs::File;
 use std::io::{BufRead, BufReader, Write};
 
 /*
-Author Gaurav Sablok
-SLB Potsdam
-Date: 2025-2-3
-making the stats of the alignment and estimating all the site
-frquencies and the base frequencing and the number of the sites
-with N and the mismatches.
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
 */
 
 #[tokio::main]

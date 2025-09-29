@@ -3,10 +3,8 @@ use std::fs::File;
 use std::io::{BufRead, BufReader};
 
 /*
- Author Gaurav Sablok
- SLB Potsdam
- Date: 2025-2-4
-allows for the visualization of the spliced alignment
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
 */
 
 #[tokio::main]

@@ -3,11 +3,8 @@ use std::fs::File;
 use std::io::{BufRead, BufReader, Write};
 
 /*
-
-Author Gaurav Sablok
-SLb Potsdam
-Date: 2025-2-3
-removal of all the sites that are same across the alignment and prepare the alignment for the feeds to the rnn netowrk
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
 */
 
 #[tokio::main]

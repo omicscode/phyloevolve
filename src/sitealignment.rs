@@ -2,10 +2,8 @@ use crate::filesearch::read;
 use std::error::Error;
 
 /*
-  Author Gaurav Sablok
-  SLB Potsdam
-  Date: 2025-2-5
- site specific alignment bases position.
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
 */
 
 #[tokio::main]

@@ -3,10 +3,8 @@ use std::fs::File;
 use std::io::{BufRead, BufReader, Write};
 
 /*
- Author Gaurav Sablok
-SLB Potsdam,
-Date: 2025-2-3
-filtering the specific sites from the alignment using the specific based
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
 */
 
 #[tokio::main]

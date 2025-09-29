@@ -4,11 +4,8 @@ use std::fs::File;
 use std::io::{BufRead, BufReader, Write};
 
 /*
-Author Gaurav Sablok
-SLB Potsdam
-Date 2025-2-3
-splicing the alignment and then merging the merging. It will merge
-only those sites across all the alignments which you have selected.
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
 */
 
 #[tokio::main]

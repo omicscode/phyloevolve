@@ -2,11 +2,10 @@ use colored::Colorize;
 use std::error::Error;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
+
 /*
-  Author Gaurav Sablok
-  SLB Potsdam
-  Date: 2025-2-8
-  protein colour coded heatmaps
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
 */
 
 #[tokio::main]

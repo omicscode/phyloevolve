@@ -3,11 +3,8 @@ use std::fs::File;
 use std::io::{BufRead, BufReader};
 
 /*
-  Author Gaurav Sablok
-  SLB Potsdam
-  Date : 2025-2-5
- a general purpose function for reading and writing fasta vectors.
-
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
 */
 
 #[tokio::main]

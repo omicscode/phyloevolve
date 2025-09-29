@@ -4,11 +4,9 @@ use std::fs::File;
 use std::io::Write;
 
 /*
-* Author Gaurav Sablok
-* Date: 2025-2-2
-  SLB Potsdam.
-* a complete set of the alignment tools for the evolutionary scale and also for the graph alignments
-* */
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
+*/
 
 #[tokio::main]
 pub async fn upstreamdownstream(

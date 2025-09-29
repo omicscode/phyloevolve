@@ -4,11 +4,10 @@ use charts::{Chart, HorizontalBarView, ScaleBand, ScaleLinear};
 use std::error::Error;
 use std::fs::File;
 use std::io::Write;
+
 /*
-  Author Gaurav Sablok
-  SLB Potsdam
-  Date: 2025-2-7
-  frequency plotter for the genome alignment data.
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
 */
 
 #[tokio::main]

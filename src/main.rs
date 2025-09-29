@@ -43,11 +43,9 @@ use clap::Parser;
 use figlet_rs::FIGfont;
 
 /*
-* Author Gaurav Sablok
-* Date: 2025-2-2
-  SLB Potsdam.
-* a complete set of the alignment tools for the evolutionary scale and also for the graph alignments
-* */
+Author Gaurav Sablok,
+Email: codeprog@icloud.com
+*/
 
 fn main() {
     let standard_font = FIGfont::standard().unwrap();
